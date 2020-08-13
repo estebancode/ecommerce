@@ -1,0 +1,52 @@
+.log-in-form {
+    background: linear-gradient(to bottom right,#005454, #1278a2);
+    color: white;
+    border-radius: 22px;
+
+
+    .mat-raised-button {
+        background-image: linear-gradient(to right, #6c6cfe,#d998a4);
+        text-transform: uppercase;
+        min-width: unset;
+        color: white;
+        width: 100%;
+        height: 60px;
+        font-size: 40px;
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+    }
+
+    .mat-form-field {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+    }
+
+    .mat-form-field-infix {
+        display: block;
+        position: relative;
+        flex: auto;
+        min-width: 0;
+        width: 180px;
+    }
+
+    img {
+        padding: 14px;
+    }
+
+    .example-form {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .example-form> * {
+        width: 100%;
+      }
+
+    p{
+        font-family: Quattrocento !important;
+    }
+
+}

@@ -1,13 +1,37 @@
 <div class="sign-in-container">
-    <div class="login-form-sign-up">
-        <div>
-            <div class="titles">
-                <h1>Fresh cut</h1>
-                <h1>flowers</h1>
-                <h2>Now you can order online</h2>
-            </div>
-            <div>
-                <button mat-raised-button (click)="openDialogEdit()" >SIGN UP</button>
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-12 col-lg-4">
+                <h1 class="text-center">Hello!</h1>
+                <h6 class="text-center">Sign in to your account</h6>
+                <form>
+                    <div class="form-group">
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" id="UserInput" placeholder="User">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="material-icons">email</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-2">
+                            <input type="password" class="form-control" id="PassInput" placeholder="Pass">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="material-icons">https</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a href="">Forgot Password?</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="button">Sing In</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -1,37 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-toolbar',
-  templateUrl: 'toolbar.component.html',
-  styles: [`:host {
-    background-color: #106cc8;
-    color: rgba(255, 255, 255, 0.87);
-    display: block;
-    height: 48px;
-    padding: 0 16px;
-  }
-
-  h1 {
-    display: inline;
-    font-size: 20px;
-    font-weight: normal;
-    letter-spacing: 0.1px;
-    line-height: 48px;
-  }
-
-  .more {
-    background: url("/assets/svg/more.svg");
-    float: right;
-    height: 24px;
-    margin-top: 12px;
-    width: 24px;
-  }`]
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
+  /** Based on the screen size, switch from standard to one column per row */
+  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(({ matches }) => {
+      if (matches) {
+        return [
+          { title: 'Card 1', cols: 1, rows: 1 },
+          { title: 'Card 2', cols: 1, rows: 1 },
+          { title: 'Card 3', cols: 1, rows: 1 },
+          { title: 'Card 4', cols: 1, rows: 1 }
+        ];
+      }
 
-  constructor() { }
+      return [
+        { title: 'Card 1', cols: 2, rows: 1 },
+        { title: 'Card 2', cols: 1, rows: 1 },
+        { title: 'Card 3', cols: 1, rows: 2 },
+        { title: 'Card 4', cols: 1, rows: 1 }
+      ];
+    })
+  );
 
-  ngOnInit() {
-  }
-
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }

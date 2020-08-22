@@ -14,10 +14,10 @@ export class SecurityGuard implements CanActivate {
   }
 
   active(): boolean | undefined {
-    if (window.sessionStorage.getItem('msal.idtoken') !== '' ||
-    window.sessionStorage.getItem('msal.idtoken') === null ||
-    window.sessionStorage.getItem('msal.idtoken') === undefined ||
-    window.sessionStorage.getItem('msal.idtoken') === 'null') {
+    if (window.sessionStorage.getItem('user') !== '' ||
+    window.sessionStorage.getItem('user') === null ||
+    window.sessionStorage.getItem('user') === undefined ||
+    window.sessionStorage.getItem('user') === 'null') {
       this.router.navigate(['/authentication']);
     }
     return true;

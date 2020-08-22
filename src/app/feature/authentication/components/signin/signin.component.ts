@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../login-form/login-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +10,8 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +26,11 @@ export class SigninComponent implements OnInit {
       if (resultForm) {
       }
     });
+  }
+
+  logIn() {
+    sessionStorage.setItem('user', 'test.user');
+    this.router.navigate(['/home']);
   }
 
 }

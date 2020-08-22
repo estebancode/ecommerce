@@ -7,6 +7,7 @@ import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationModule } from './feature/authentication/authentication.module';
+import { HomeModule } from './feature/home/home.module';
 
 
 
@@ -20,6 +21,7 @@ import { AuthenticationModule } from './feature/authentication/authentication.mo
     AppRoutingModule,
     CoreModule,
     AuthenticationModule,
+    HomeModule,
     BrowserAnimationsModule
   ],
   providers: [CookieService],

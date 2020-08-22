@@ -29,6 +29,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NavComponent } from './components/nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 
@@ -38,7 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MensajeErrorCamposDirective,
     MensajeErrorCamposContenedorDirective,
     MensajeErrorCamposSubmitDirective,
-    TrackByPipe
+    TrackByPipe,
+    NavComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -53,7 +56,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatExpansionModule,
     MatMenuModule,
-    RouterModule],
+    RouterModule,
+    LayoutModule],
   exports: [
     CommonModule,
     HttpClientModule,
@@ -82,7 +86,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatDatepickerModule,
     MatTabsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NavComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

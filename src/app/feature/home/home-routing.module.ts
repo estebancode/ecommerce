@@ -6,7 +6,13 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent ,
+    children: [
+      {
+        path: '',
+        loadChildren: '../dashboard/dashboard.module#DashboardModule'
+      },
+    ]
   },
 ];
 

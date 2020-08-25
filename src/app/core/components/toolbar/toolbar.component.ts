@@ -8,6 +8,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+  menu = false;
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -28,6 +29,12 @@ export class ToolbarComponent {
       ];
     })
   );
-
+  cambiaMenu() {
+    if(this.menu) {
+      this.menu = false;
+    } else {
+      this.menu = true;
+    }
+  }
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

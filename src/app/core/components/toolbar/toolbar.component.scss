@@ -1,3 +1,77 @@
+mat-toolbar {
+  background-color: #ADC9C9;
+}
+.btn-client {
+  background-color: #EEEEEE;
+  color: #065F6D;
+  border:0;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 5px 20px;
+  width: 110px;
+  position: relative;
+  height: 33px;
+  top: 10px;
+  outline: 0;
+  cursor: pointer;
+  span {
+    position: absolute;
+    left: 19px;
+    top: 5px;
+  }
+  mat-icon {
+    top: 3px;
+    position: absolute;
+    right: 16px;
+  }
+  :focus {
+    outline: -webkit-focus-ring-color auto 0px;
+  }
+}
 .example-spacer {
   flex: 1 1 auto;
+}
+.sub-menu {
+  position: absolute;
+  top: 65px;
+  right: 7px;
+  z-index: 10;
+  width: 302px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 20px;
+  overflow: hidden;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .firts-list {
+      background-color: #065F6D;
+      padding: 12px;
+      color: #fff;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      span {
+        background-color: #fff;
+        padding: 5px 12px;
+        border-radius: 20px;
+        color: #065F6D;
+        margin-left: 10px;
+      }
+      img{
+        margin-bottom: -11px;
+        margin-right: 10px;
+      }
+    }
+    li {
+      padding: 6px 12px;
+      color: #065F6D;
+      background-color: #fff;
+      font-weight: bold;
+      &.next-list {
+        
+      }
+    }
+  }
 }

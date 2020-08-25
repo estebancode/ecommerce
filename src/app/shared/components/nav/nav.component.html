@@ -1,22 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <div class="space"></div>
+    <mat-toolbar>
+      <mat-icon>
+        panorama_fish_eye
+      </mat-icon>
+      DASHBOARD
+    </mat-toolbar>
+    <mat-nav-list class="mt-5">
+      <a mat-list-item href="#"><mat-icon>local_florist</mat-icon> STOCK</a>
+      <a mat-list-item href="#"><mat-icon>add_shopping_cart</mat-icon> ODERS</a>
+      <a mat-list-item href="#"><mat-icon>all_inbox</mat-icon> SHIPMENT</a>
+      <a mat-list-item href="#"><mat-icon>receipt</mat-icon> REPORTS</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>

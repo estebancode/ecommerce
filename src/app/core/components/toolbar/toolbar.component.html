@@ -1,13 +1,18 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
+  <button 
+  (click)="cambiaMenu()"
+    class="example-icon person-icon mr-5 btn-client">
+    <span>client</span> <mat-icon>person</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+  <div class="sub-menu animate__fadeInDown" *ngIf="menu">
+    <ul>
+      <li class="firts-list">
+        <img src="./assets/img/Recurso1.png" alt="" class="img-circle"> Botanical Flowers <span>Logout</span>
+      </li>
+      <li class="next-list">Amazon</li>
+      <li class="next-list">Wallmart</li>
+      <li class="next-list">Cosco</li>
+    </ul>
+  </div>
 </mat-toolbar>

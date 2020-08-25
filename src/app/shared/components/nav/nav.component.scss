@@ -1,6 +1,12 @@
 .sidenav-container {
   height: 100%;
 }
+.sidenav {
+  background:linear-gradient(180deg, rgba(0,84,84,1) 0%, rgba(0,84,84,1) 48%, rgba(18,120,162,1) 100%);
+  mat-toolbar, a {
+    color: #fff;
+  }
+}
 
 .sidenav {
   width: 200px;
@@ -14,4 +20,10 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+.space {
+  width: 100%;
+  @media (min-width: 780px) {
+    height: 100px;
+  }
 }

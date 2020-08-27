@@ -1,0 +1,52 @@
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    box-shadow: 0px 0px 8px 2px #ccc;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    &.grafico-bg-bali {
+        background-color: #919DB4;
+        .card-body {
+            color: #065F6D;
+        }
+    }
+    .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem 1.25rem .5rem 1.25rem;
+        position: relative;
+        color: #A7A9AC;
+        .imagen {
+            background: rgb(0,84,84);
+            background: linear-gradient(83deg, rgba(0,84,84,1) 0%, rgba(0,84,84,1) 48%, rgba(18,120,162,1) 100%);
+            position: absolute;
+            padding: 5px 5px 3px;
+            border-radius: 10px;
+            top: -12px;
+            right: 20px;
+        }
+        .buttonEdit {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            span{
+                background: rgb(0,84,84);
+                background: linear-gradient(83deg, rgba(0,84,84,1) 0%, rgba(0,84,84,1) 48%, rgba(18,120,162,1) 100%);
+                border-radius: 100%;
+                display: block;
+                width: 5px;
+                height: 5px;
+                margin-bottom: 2px;
+            }
+        }
+    }
+}

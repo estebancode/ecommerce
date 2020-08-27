@@ -1,0 +1,25 @@
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 0.5rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: .75rem;
+    background-color: #EEEEEE;
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+    .progress-bar {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: center;
+        justify-content: center;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #065F6D;
+        transition: width .6s ease;
+    }
+}

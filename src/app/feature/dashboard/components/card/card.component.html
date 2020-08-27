@@ -1,0 +1,22 @@
+<div class="card {{class}}">
+    <div class="card-body">
+        <div class="card-head">
+            <h3 class="color-general f-bold">{{Titulo}}</h3>
+        </div>
+        <span *ngIf="edit" class="buttonEdit">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <span *ngIf="imagen !== ''" class="imagen">
+            <img class="img-icono" src="./assets/img/{{imagen}}" alt="">
+        </span>
+        <ng-content></ng-content>
+        <div class="content-date" *ngIf="TraeFecha">
+            <hr>
+            <div class="text-rigth">
+                <p>Last Update {{ Fecha }}</p>
+            </div>
+        </div>
+    </div>
+</div>

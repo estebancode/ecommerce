@@ -10,9 +10,6 @@ import { AuthenticationModule } from './feature/authentication/authentication.mo
 import { HomeModule } from './feature/home/home.module';
 import { DashboardModule } from './feature/dashboard/dashboard.module';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent

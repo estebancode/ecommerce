@@ -1,1 +1,133 @@
-<p>dashboard works!</p>
+<div class="container-fluid py-3">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="color-general f-bold">DASHBOARD</h1>
+        </div>
+        <div class="col-12 col-lg-8">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <app-card [imagen]="'Recurso1.png'" [Titulo]="'Shipjhonson'" [TraeFecha]="true" [Fecha]="'10/08/2020'">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6 p-0">
+                                    <ul class="listas">
+                                        <li>Aconitum 65</li>
+                                        <li>Allium roseum 89</li>
+                                        <li>Astrantina 46</li>
+                                        <li>Red Roses 45</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 p-0">
+                                    <ul class="listas">
+                                        <li>Sunflower 56</li>
+                                        <li>Lily 45</li>
+                                        <li>Carnation 95</li>
+                                        <li>Hydrangeas 65</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </app-card>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <app-card [imagen]="'Recurso1.png'" [Titulo]="'Packed'" [TraeFecha]="true" [Fecha]="'10/08/2020'">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6 p-0">
+                                    <ul class="listas">
+                                        <li>Birmingham 13</li>
+                                        <li>Montgomery 10</li>
+                                        <li>Auburn 45</li>
+                                        <li>Hunstville 12</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </app-card>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <app-card [imagen]="'Recurso1.png'" [Titulo]="'Wflowers'" [TraeFecha]="true" [Fecha]="'10/08/2020'">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6 p-0">
+                                    <ul class="listas">
+                                        <li>Birmingham 10</li>
+                                        <li>Montgomery 8</li>
+                                        <li>Auburn 5</li>
+                                        <li>Hunstville 9</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </app-card>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <app-card [imagen]="'Recurso1.png'" [Titulo]="'Shipped'" [TraeFecha]="true" [Fecha]="'10/08/2020'">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6 p-0">
+                                    <ul class="listas">
+                                        <li>Aconitum 65</li>
+                                        <li>Allium roseum 89</li>
+                                        <li>Astrantina 46</li>
+                                        <li>Red Roses 45</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 p-0">
+                                    <ul class="listas">
+                                        <li>Sunflower 56</li>
+                                        <li>Lily 45</li>
+                                        <li>Carnation 95</li>
+                                        <li>Hydrangeas 65</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </app-card>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <app-card [Titulo]="'Proyections vs actuals'" [edit]="true" [class]="'grafico-bg-bali'">
+            </app-card>
+        </div>
+        <div class="col-12 col-lg-8">
+            <app-card [Titulo]="'Orders last 12h'" [imagen]="'Recurso1.png'">
+            </app-card>
+        </div>
+        <div class="col-12 col-lg-4">
+            <app-card [imagen]="'Recurso1.png'" [Titulo]="'Orders'" [edit]="true">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 p-0">
+                            <ul class="listas">
+                                <li>Birmingham 10</li>
+                                <li>Montgomery 8</li>
+                                <li>Auburn 5</li>
+                                <li>Hunstville 9</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </app-card>
+            <app-card [imagen]="'Recurso1.png'" [Titulo]="'Facilities'" [edit]="true">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <h4 class="color-general f-bold mb-0">KS</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 80%" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="col-12 p-0">
+                            <h4 class="color-general f-bold mb-0">NK</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 95%" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </app-card>
+        </div>
+    </div>
+</div>

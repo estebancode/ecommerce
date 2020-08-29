@@ -24,3 +24,10 @@ $primario: #065F6D;
 .bg-color-f5 {
     background-color: #f5f5f5;
 }
+.item-hover .mat-list-item-content {
+    &:hover, &:active, &:focus {
+      background-color: #fff;
+      border-radius: 20px;
+      color: #065F6D;
+    }
+  }

@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.0",
     "animate.css": "^4.1.0",
     "bootstrap-4-grid": "^3.4.0",
+    "moment": "^2.27.0",
     "ngx-cookie-service": "^2.2.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",

@@ -31,6 +31,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -56,6 +57,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatExpansionModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     RouterModule,
     LayoutModule],
   exports: [
@@ -85,6 +88,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatPaginatorModule,
     MatSortModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatTabsModule,
     MatCheckboxModule,
     NavComponent

@@ -1,0 +1,107 @@
+<div class="mat-elevation-z8" >
+    <mat-card>
+        <mat-form-field color="accent" appearance="fill">
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="searchData.StartDate" >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field color="accent" appearance="fill">
+            <mat-label>End date</mat-label>
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="searchData.EndDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+          <button mat-button type="button" (click)="searchOrders()" >Search <mat-icon>search</mat-icon></button>
+    </mat-card>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="ponumber">
+        <th mat-header-cell *matHeaderCellDef> PO number </th>
+        <td mat-cell *matCellDef="let element"> {{element.PONumber}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="shippingdate">
+        <th mat-header-cell *matHeaderCellDef> Shipping date </th>
+        <td mat-cell *matCellDef="let element"> {{element.ShippingDate  | date:"MM/dd/yyyy hh:mm:ss"}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="shippingmethodcode">
+        <th mat-header-cell *matHeaderCellDef> Shipping method code </th>
+        <td mat-cell *matCellDef="let element"> {{element.ShippingMethodCode}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="shipto">
+        <th mat-header-cell *matHeaderCellDef> Ship to </th>
+        <td mat-cell *matCellDef="let element"> {{element.ShipTo}} </td>
+      </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="shiptoaddress">
+            <th mat-header-cell *matHeaderCellDef> Ship to address </th>
+            <td mat-cell *matCellDef="let element"> {{element.ShipToAddress}} </td>
+        </ng-container>
+  
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="shiptocity">
+            <th mat-header-cell *matHeaderCellDef> Ship to city </th>
+            <td mat-cell *matCellDef="let element"> {{element.ShipToCity}} </td>
+        </ng-container>
+        
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="shiptostate">
+            <th mat-header-cell *matHeaderCellDef> Ship to state </th>
+            <td mat-cell *matCellDef="let element"> {{element.ShipToState}} </td>
+        </ng-container>
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="shiptozipcode">
+            <th mat-header-cell *matHeaderCellDef> Ship to zipcode </th>
+            <td mat-cell *matCellDef="let element"> {{element.ShipToZipCode}} </td>
+        </ng-container>
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> Item </th>
+            <td mat-cell *matCellDef="let element"> {{element.Item}} </td>
+        </ng-container>
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="units">
+            <th mat-header-cell *matHeaderCellDef> Units </th>
+            <td mat-cell *matCellDef="let element"> {{element.Units}} </td>
+        </ng-container> 
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="sku">
+            <th mat-header-cell *matHeaderCellDef> SKU </th>
+            <td mat-cell *matCellDef="let element"> {{element.SKU}} </td>
+        </ng-container>
+        
+         <!-- Symbol Column -->
+         <ng-container matColumnDef="productname">
+            <th mat-header-cell *matHeaderCellDef> Product name </th>
+            <td mat-cell *matCellDef="let element"> {{element.ProductName}} </td>
+        </ng-container>
+        
+         <!-- Symbol Column -->
+         <ng-container matColumnDef="facilitycode">
+            <th mat-header-cell *matHeaderCellDef> Facility code </th>
+            <td mat-cell *matCellDef="let element"> {{element.FacilityCode}} </td>
+        </ng-container>          
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>

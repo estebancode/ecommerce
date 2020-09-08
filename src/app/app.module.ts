@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationModule } from './feature/authentication/authentication.module';
 import { HomeModule } from './feature/home/home.module';
 import { DashboardModule } from './feature/dashboard/dashboard.module';
+import { OrdersModule } from './feature/orders/orders.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DashboardModule } from './feature/dashboard/dashboard.module';
     AuthenticationModule,
     HomeModule,
     BrowserAnimationsModule,
-    DashboardModule
+    DashboardModule,
+    OrdersModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

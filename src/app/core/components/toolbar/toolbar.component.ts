@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -36,5 +37,12 @@ export class ToolbarComponent {
       this.menu = true;
     }
   }
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private router: Router) {}
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['/authentication']);
+  }
+
 }

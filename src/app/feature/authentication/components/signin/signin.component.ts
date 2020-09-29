@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit {
   }
 
   logIn() {
-    sessionStorage.setItem('user', 'test.user');
+    localStorage.setItem('user', 'test.user');
     this.router.navigate(['/']);
   }
 

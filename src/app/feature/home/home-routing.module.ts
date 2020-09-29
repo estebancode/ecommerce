@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { SecurityGuard } from '../../core/guard/security.guard';
 
 
 const routes: Routes = [
@@ -10,11 +11,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: '../dashboard/dashboard.module#DashboardModule'
+        loadChildren: '../dashboard/dashboard.module#DashboardModule',
+        canActivate: [SecurityGuard]
       },
       {
         path: 'orders',
-        loadChildren: '../orders/orders.module#OrdersModule'
+        loadChildren: '../orders/orders.module#OrdersModule',
+        canActivate: [SecurityGuard]
       },
     ]
   },

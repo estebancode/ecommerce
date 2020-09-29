@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: '/prospectos-vida'
+  endpoint: 'https://cognitiveapidev.azurewebsites.net/api/CostcoCom'
 };
 
 /*

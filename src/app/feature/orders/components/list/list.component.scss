@@ -4,4 +4,32 @@ mat-form-field {
 
   table {
     width: 100%;
-  } 
+  }
+
+  .orders-table {
+    box-shadow: none;
+    overflow: auto;
+  }
+
+  table, .medium-card {
+    width: 100%;
+ }
+     
+ .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+ }
+ 
+ tr.active td {
+   &:first-child {
+     border-left: 4px;
+   }
+ }
+ 
+ .row .content-total {
+    float: right;
+  }
+  
+ .title {
+    margin: 5px;
+  }

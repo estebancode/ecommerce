@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   isSelection: boolean;
   selection = new SelectionModel<any>(true, []);
   displayedColumns: string[] = ['select', 'ponumber', 'shippingdate', 'shippingmethodcode', 'shipto',
-  'shiptoaddress', 'shiptocity', 'shiptostate', 'shiptozipcode', 'item', 'units', 'sku', 'productname', 'facilitycode'];
+  'shiptoaddress', 'shiptocity', 'shiptostate', 'shiptozipcode', 'item', 'units', 'sku', 'productname', 'facilitycode', 'giftmessage'];
   dataSource = new MatTableDataSource<ProcessedOrder>();
   modifyOrdersForm: FormGroup;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -92,6 +92,7 @@ export class ListComponent implements OnInit {
     }));
     this.service.modify(ordersToModify).subscribe(() => {
       this.searchOrders();
+      this.dialog.closeAll();
     }, () => {
       alert('An error has occurred');
     });

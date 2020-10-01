@@ -160,6 +160,12 @@
               <td mat-cell *matCellDef="let element"> {{element.facilityCode}} </td>
             </ng-container>
 
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="giftmessage">
+              <th mat-header-cell *matHeaderCellDef> Gift message </th>
+              <td mat-cell *matCellDef="let element"> {{element.giftMessage}} </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>

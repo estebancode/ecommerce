@@ -60,3 +60,6 @@ $primario: #065F6D;
     background-color: #28a745;
     border-color: #28a745;
 }
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0.75rem !important;
+}

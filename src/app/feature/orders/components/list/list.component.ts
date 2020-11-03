@@ -41,7 +41,11 @@ export class ListComponent implements OnInit {
       shipTo: [''],
       shippingDate: [''],
       shippingMethod: [''],
-      giftMessage: ['']
+      giftMessage: [''],
+      shipToAddress: [''],
+      shipToCity: [''],
+      shipToState: [''],
+      units: ['']
     });
   }
 
@@ -86,16 +90,28 @@ export class ListComponent implements OnInit {
     const ordersToModify = new Array<OrderModify>();
     lodash.forEach(this.selection.selected, ((value: ProcessedOrder) => {
 
+      let units = Number(this.formControls.units.value);
+
+      units = units > 0 ? units : null;
+
       ordersToModify.push(
         new OrderModify(value.poNumber, this.formControls.shippingDate.value, this.formControls.shippingMethod.value,
-           this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value));
+           this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value,
+           this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value,
+           units));
     }));
     this.service.modify(ordersToModify).subscribe(() => {
       this.searchOrders();
+      this.clearModifyForm();
       this.dialog.closeAll();
     }, () => {
       alert('An error has occurred');
     });
+  }
+
+  clearModifyForm() {
+    this.modifyOrdersForm.clearValidators();
+    this.modifyOrdersForm.reset();
   }
 
   get formControls() { return this.modifyOrdersForm.controls; }

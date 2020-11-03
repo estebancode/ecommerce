@@ -5,7 +5,7 @@
         <div class="col-12 mb-3">
           <h1 class="text-center">ORDERS</h1>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <mat-form-field appearance="fill">
             <mat-label>Start date</mat-label>
             <input matInput [matDatepicker]="picker1" [(ngModel)]="searchData.StartDate">
@@ -13,7 +13,7 @@
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <mat-form-field appearance="fill">
             <mat-label>End date</mat-label>
             <input matInput [matDatepicker]="picker2" [(ngModel)]="searchData.EndDate">
@@ -21,25 +21,25 @@
             <mat-datepicker #picker2 color="primary"></mat-datepicker>
           </mat-form-field>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <mat-form-field appearance="fill">
             <mat-label>PO number</mat-label>
             <input matInput placeholder="" [(ngModel)]="searchData.PoNumber">
           </mat-form-field>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <mat-form-field appearance="fill">
             <mat-label>Facility code</mat-label>
             <input matInput placeholder="" [(ngModel)]="searchData.FacilityCode">
           </mat-form-field>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <mat-form-field appearance="fill">
             <mat-label>SKU</mat-label>
             <input matInput placeholder="" [(ngModel)]="searchData.SKU">
           </mat-form-field>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <mat-form-field appearance="fill">
             <mat-label>Shipping method</mat-label>
             <input matInput placeholder="" [(ngModel)]="searchData.ShippingMethod">
@@ -176,6 +176,7 @@
   </div>
 </div>
 </mat-card>
+
 <ng-template #modifyOrders>
   <div class="container-fluid">
     <div class="row">
@@ -187,16 +188,19 @@
           <mat-dialog-content class="p-0">
             <div class="container-fluid">
               <div class="row">
+
                 <div class="col-12 col-lg-6 mb-3">
                   <mat-form-field>
                     <input type="text" matInput placeholder="Facility code" formControlName="facilityCode">
                   </mat-form-field>
                 </div>
+
                 <div class="col-12 col-lg-6 mb-3">
                   <mat-form-field>
                     <input type="text" matInput placeholder="Ship to" formControlName="shipTo">
                   </mat-form-field>
                 </div>
+
                 <div class="col-12 col-lg-6 mb-3">
                   <mat-form-field appearance="fill">
                     <mat-label>Shipping date</mat-label>
@@ -205,16 +209,43 @@
                     <mat-datepicker #picker3></mat-datepicker>
                   </mat-form-field>
                 </div>
+
                 <div class="col-12 col-lg-6 mb-3">
                   <mat-form-field>
                     <input type="text" matInput placeholder="Shipping method" formControlName="shippingMethod">
                   </mat-form-field>
                 </div>
-                <div class="col-12 col-lg-12 mb-3">
+
+                <div class="col-12 col-lg-6 mb-3">
                   <mat-form-field>
                     <input type="text" matInput placeholder="Gift message" formControlName="giftMessage">
                   </mat-form-field>
                 </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Ship to address" formControlName="shipToAddress">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-12 col-lg-6 mb-3">
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Ship to city" formControlName="shipToCity">
+                  </mat-form-field>
+                </div> 
+                
+                <div class="col-12 col-lg-6 mb-3">
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Ship to state" formControlName="shipToState">
+                  </mat-form-field>
+                </div> 
+                
+                <div class="col-12 col-lg-6 mb-3">
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Units" formControlName="units">
+                  </mat-form-field>
+                </div>  
+
               </div>
             </div>
           </mat-dialog-content>

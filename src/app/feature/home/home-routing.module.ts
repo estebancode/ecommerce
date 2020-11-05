@@ -19,6 +19,11 @@ const routes: Routes = [
         loadChildren: '../orders/orders.module#OrdersModule',
         canActivate: [SecurityGuard]
       },
+      {
+        path: 'stock',
+        loadChildren: '../stock/stock.module#StockModule',
+        canActivate: [SecurityGuard]
+      }
     ]
   },
 ];

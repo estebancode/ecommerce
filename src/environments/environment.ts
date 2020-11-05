@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: 'https://cognitiveapidev.azurewebsites.net/api/CostcoCom'
+  endpoint: 'https://cognitiveapidev.azurewebsites.net/api/'
 };
 
 /*

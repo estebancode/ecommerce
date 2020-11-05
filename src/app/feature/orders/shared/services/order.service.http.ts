@@ -30,7 +30,7 @@ export class OrderServiceHttp {
   }
 
   private buildURL(orderFiltered: FilterOrder): string {
-    let urlFilter = `${this.URL_ORDER}/GetOrders?dateFrom=${orderFiltered.dateFrom}&dateTo=${orderFiltered.dateTo}`;
+    let urlFilter = `${this.URL_ORDER}/CostcoCom/GetOrders?dateFrom=${orderFiltered.dateFrom}&dateTo=${orderFiltered.dateTo}`;
 
     if (orderFiltered.PoNumber) {
       urlFilter = `${urlFilter}&poNumber=${orderFiltered.PoNumber}`;

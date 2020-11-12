@@ -1,1 +1,135 @@
-<p>list works!</p>
+<div class="mat-elevation-z8">
+    <mat-card>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mb-3">
+            <h1 class="text-center">STOCK</h1>
+          </div>
+          <div class="col-12 col-lg-4 mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Due date</mat-label>
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="searchData.dueDate">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-lg-4 mb-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Customer</mat-label>
+              <mat-select [(ngModel)]="searchData.customerType" (valueChange)="onTypeFilterChanged($event)" required>
+                <mat-option [value]="typeFilters.CostcoCom">Costco</mat-option>
+                <mat-option [value]="typeFilters.Amazon">Amazon</mat-option>
+                <mat-option [value]="typeFilters.Sams">Sams</mat-option>
+                <mat-option [value]="typeFilters.Walmart">Walmart</mat-option>
+                <mat-option [value]="typeFilters.LifeIsGood">Life is good</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <div class="text-right">
+              <button mat-button type="button" (click)="searchStock()">Search <mat-icon>search</mat-icon></button>
+              <button mat-raised-button type="button" class="btn btn-success" (click)="modifyItems()">Modify <mat-icon>edit</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <mat-card class="mt-3">
+  <div class="mat-elevation-z8 stock-table">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <h1 class="text-center">Results</h1>
+        </div>
+        <div class="col-12">
+          <div class="table-aresponsive">
+            <table mat-table [dataSource]="dataSource" class="table">
+  
+  
+              <ng-container matColumnDef="select" *ngIf="isSelection">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox color="primary" (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                    (change)="$event ? select(element) : null" [checked]="selection.isSelected(element)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+  
+              <!-- Slot Column -->
+              <ng-container matColumnDef="slot">
+                <th mat-header-cell *matHeaderCellDef> Slot </th>
+                <td mat-cell *matCellDef="let element"> {{element.slot}} </td>
+              </ng-container>
+  
+              <!-- Product name Column -->
+              <ng-container matColumnDef="productName">
+                <th mat-header-cell *matHeaderCellDef> Product name </th>
+                <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+              </ng-container>
+  
+              <!-- facility Column -->
+              <ng-container matColumnDef="facility">
+                <th mat-header-cell *matHeaderCellDef> Facility </th>
+                <td mat-cell *matCellDef="let element"> {{element.facility}} </td>
+              </ng-container>
+  
+              <!-- inventory Column -->
+              <ng-container matColumnDef="inventory">
+                <th mat-header-cell *matHeaderCellDef> Inventory </th>
+                <td mat-cell *matCellDef="let element"> {{element.inventory}} </td>
+              </ng-container>
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+          <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+  </mat-card>
+  
+  <ng-template #modifyStock>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <form [formGroup]="modifyStockForm" (ngSubmit)="onSubmit()">
+            <div class="p-3">
+              <h1 mat-dialog-titleclass="title-general">Modify selected stock</h1>
+            </div>
+            <mat-dialog-content class="p-0">
+              <div class="container-fluid">
+                <div class="row">
+                  
+                  <div class="col-12 col-lg-6 mb-3">
+                    <mat-form-field>
+                      <input type="text" matInput placeholder="Inventory" formControlName="inventory" autocomplete="off" >
+                    </mat-form-field>
+                  </div>  
+  
+                </div>
+              </div>
+            </mat-dialog-content>
+            <mat-dialog-actions>
+              <div class="d-flex justify-content-end botonera mb-3 col-lg">
+                <button class="btn-secondary" mat-button mat-dialog-close>
+                  close
+                </button>
+                <button mat-raised-button class="btn-success" type="submit">
+                  Send
+                </button>
+              </div>
+            </mat-dialog-actions>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  </ng-template>

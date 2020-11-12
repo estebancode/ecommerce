@@ -112,6 +112,7 @@ export class ListComponent implements OnInit {
   clearModifyForm() {
     this.modifyOrdersForm.clearValidators();
     this.modifyOrdersForm.reset();
+    this.selection.clear();
   }
 
   get formControls() { return this.modifyOrdersForm.controls; }

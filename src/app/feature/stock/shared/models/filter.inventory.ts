@@ -1,4 +1,5 @@
 export class FilterInventory {
-    public dateFilter: Date;
+    public dueDate: Date;
+    public dateFilter: string;
     public customerType: number;
 }

@@ -10,6 +10,7 @@ import { AuthenticationModule } from './feature/authentication/authentication.mo
 import { HomeModule } from './feature/home/home.module';
 import { DashboardModule } from './feature/dashboard/dashboard.module';
 import { OrdersModule } from './feature/orders/orders.module';
+import { StockModule } from './feature/stock/stock.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { OrdersModule } from './feature/orders/orders.module';
     HomeModule,
     BrowserAnimationsModule,
     DashboardModule,
-    OrdersModule
+    OrdersModule,
+    StockModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { StockServiceHttp } from '../../shared/services/stock.service.http';
@@ -47,7 +47,7 @@ export class ListComponent implements OnInit {
       slot: [''],
       productName: [''],
       facility: [''],
-      inventory: ['']
+      inventory: ['', [Validators.required]]
     });
   }
 
@@ -96,12 +96,13 @@ export class ListComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.modifyStockForm.invalid) {
+      return;
+    }
     const stockToModify = new Array<StockModify>();
     lodash.forEach(this.selection.selected, ((value: StockRecord) => {
 
-      let units = Number(this.formControls.inventory.value);
-
-      units = units > 0 ? units : null;
+      const units = Number(this.formControls.inventory.value);
 
       stockToModify.push(new StockModify(value.id, units, value.slot, value.facility, value.productName, value.duedate));
     }));

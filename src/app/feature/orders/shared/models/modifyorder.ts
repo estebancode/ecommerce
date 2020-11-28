@@ -25,4 +25,21 @@ export class OrderModify {
       this.units = units;
     }
 
+    public createWithoutUnits(order: OrderModify) {
+
+      const newWithoutUnits = {
+        poNumber: order.poNumber,
+        shippingDate : order.shippingDate,
+        shippingMethodCode : order.shippingMethodCode,
+        shipTo : order.shipTo,
+        facilityCode : order.facilityCode,
+        giftMessage : order.giftMessage,
+        shipToAddress : order.shipToAddress,
+        shipToCity : order.shipToCity,
+        shipToState : order.shipToState,
+      };
+
+      return newWithoutUnits;
+  }
+
   }

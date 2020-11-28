@@ -13,7 +13,7 @@ export class StockServiceHttp {
     'Content-Type': 'application/json'
   });
 
-  public readonly URL_ORDER = `${environment.endpoint}`;
+  public readonly URL_STOCK = `${environment.endpoint}/Shared`;
 
   constructor(private http: HttpClient) { }
 
@@ -24,12 +24,12 @@ get(inventoryFiltered: FilterInventory) {
 }
 
 modify(stocks: Array<StockModify>, customerType: number) {
-  return this.http.put(`${this.URL_ORDER}/Shared/UpdateInventoryByCustomer/${customerType}`,
+  return this.http.put(`${this.URL_STOCK}/UpdateInventoryByCustomer/${customerType}`,
   stocks, { headers: this.header });
 }
 
 private buildURL(filterInventory: FilterInventory): string {
-    return `${this.URL_ORDER}/Shared/getinventorybycustomer?dateFilter=${filterInventory.dateFilter}&customerType=${filterInventory.customerType}`;
+    return `${this.URL_STOCK}/getinventorybycustomer?dateFilter=${filterInventory.dateFilter}&customerType=${filterInventory.customerType}`;
 }
 
 }

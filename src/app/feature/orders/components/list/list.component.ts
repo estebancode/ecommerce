@@ -87,18 +87,15 @@ export class ListComponent implements OnInit {
   }
 
   onSubmit() {
-    const ordersToModify = new Array<OrderModify>();
+    const ordersToModify = new Array<any>();
     lodash.forEach(this.selection.selected, ((value: ProcessedOrder) => {
 
-      let units = Number(this.formControls.units.value);
-
-      units = units > 0 ? units : null;
-
-      ordersToModify.push(
-        new OrderModify(value.poNumber, this.formControls.shippingDate.value, this.formControls.shippingMethod.value,
-           this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value,
-           this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value,
-           units));
+      const order = new OrderModify(value.poNumber, this.formControls.shippingDate.value, this.formControls.shippingMethod.value,
+        this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value,
+        this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value,
+        this.formControls.units.value);
+      const orderToModify = order.units > 0 ? order : order.createWithoutUnits(order);
+      ordersToModify.push(orderToModify);
     }));
     this.service.modify(ordersToModify).subscribe(() => {
       this.searchOrders();

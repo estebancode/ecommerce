@@ -23,8 +23,8 @@ export class OrderServiceHttp {
     return this.http.get(URL, { headers: this.header });
   }
 
-  modify(orders: Array<OrderModify>) {
-    return this.http.put(`${this.URL_ORDER}/UpdateOrders`,
+  modify(orders: Array<any>) {
+    return this.http.put(`${this.URL_ORDER}/CostcoCom/UpdateOrders`,
     orders,
                 { headers: this.header });
   }

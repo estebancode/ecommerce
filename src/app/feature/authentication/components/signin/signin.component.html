@@ -4,10 +4,10 @@
             <div class="col-12 col-lg-4">
                 <h1 class="text-center">Hello!</h1>
                 <h6 class="text-center">Sign in to your account</h6>
-                <form>
+                <form [formGroup]="loginUserForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <div class="input-group mb-2">
-                            <input type="text" class="form-control" id="UserInput" placeholder="User">
+                            <input type="text" class="form-control" required id="UserInput" formControlName="userName" autocomplete="off" placeholder="User">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="material-icons">email</span>
@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group mb-2">
-                            <input type="password" class="form-control" id="PassInput" placeholder="Pass">
+                            <input type="password" class="form-control" required id="PassInput" formControlName="userPassword" autocomplete="off" placeholder="Pass">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="material-icons">https</span>
@@ -29,7 +29,7 @@
                         <a href="">Forgot Password?</a>
                     </div>
                     <div class="form-group">
-                        <button  (click)="logIn()" type="button">Sing In</button>
+                        <button type="submit">Sing In</button>
                     </div>
                 </form>
             </div>

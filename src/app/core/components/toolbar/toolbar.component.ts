@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-toolbar',
@@ -31,17 +32,19 @@ export class ToolbarComponent {
     })
   );
   cambiaMenu() {
-    if(this.menu) {
+    if (this.menu) {
       this.menu = false;
     } else {
       this.menu = true;
     }
   }
   constructor(private breakpointObserver: BreakpointObserver,
-              private router: Router) {}
+              private router: Router,
+              private cookieService: CookieService) {}
 
   logOut() {
     localStorage.clear();
+    this.cookieService.delete('token');
     this.router.navigate(['/authentication']);
   }
 

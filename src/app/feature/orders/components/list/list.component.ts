@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild('modifyOrders') modifyOrders: TemplateRef<any>;
   public searchData: FilterOrder = new FilterOrder();
+  totalUnits: number;
 
   findAudit: ProcessedOrder[] = new Array<ProcessedOrder>();
 
@@ -36,6 +37,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSelection = true;
+    this.totalUnits = 0;
     this.modifyOrdersForm = this.formBuilder.group({
       facilityCode: [''],
       shipTo: [''],
@@ -76,6 +78,7 @@ export class ListComponent implements OnInit {
     this.service.get(this.searchData).subscribe((response: Array<ProcessedOrder>) => {
       this.findAudit = response;
       this.dataSource = new MatTableDataSource<ProcessedOrder>(this.findAudit);
+      this.totalUnits = lodash.sumBy(this.findAudit, 'units');
       this.dataSource.paginator = this.paginator;
     });
   }

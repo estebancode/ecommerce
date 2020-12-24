@@ -12,5 +12,6 @@ export class ProcessedOrder {
     public sku: number;
     public facilityCode: string;
     public productName: string;
+    public isPacked: string;
     public giftMessage: string;
   }

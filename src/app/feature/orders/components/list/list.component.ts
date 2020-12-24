@@ -21,7 +21,8 @@ export class ListComponent implements OnInit {
   isSelection: boolean;
   selection = new SelectionModel<any>(true, []);
   displayedColumns: string[] = ['select', 'ponumber', 'shippingdate', 'shippingmethodcode', 'shipto',
-  'shiptoaddress', 'shiptocity', 'shiptostate', 'shiptozipcode', 'item', 'units', 'sku', 'productname', 'facilitycode', 'giftmessage'];
+  'shiptoaddress', 'shiptocity', 'shiptostate', 'shiptozipcode', 'item', 'units', 'sku', 'productname',
+  'facilitycode', 'isPacked', 'giftmessage'];
   dataSource = new MatTableDataSource<ProcessedOrder>();
   modifyOrdersForm: FormGroup;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -66,10 +67,17 @@ export class ListComponent implements OnInit {
     } else {
       this.dataSource.data.forEach(row => this.selection.select(row));
     }
+    this.showSelectedUnits();
   }
 
   select(row: any) {
     this.selection.toggle(row);
+    this.showSelectedUnits();
+  }
+
+  showSelectedUnits() {
+    const units = lodash.sumBy(this.selection.selected, 'units');
+    alert('Selected Units: ' + units);
   }
 
   searchOrders() {
@@ -96,7 +104,7 @@ export class ListComponent implements OnInit {
       const order = new OrderModify(value.poNumber, this.formControls.shippingDate.value, this.formControls.shippingMethod.value,
         this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value,
         this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value,
-        this.formControls.units.value);
+        this.formControls.units.value, value.sku);
       const orderToModify = order.units > 0 ? order : order.createWithoutUnits(order);
       ordersToModify.push(orderToModify);
     }));

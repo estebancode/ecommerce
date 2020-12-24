@@ -9,10 +9,11 @@ export class OrderModify {
     public shipToCity: string;
     public shipToState: string;
     public units: number;
+    public sku: number;
 
     constructor(poNumber: number, shippingDate: Date, shippingMethodCode: string,
                 shipTo: string, facilityCode: string, giftMessage: string,
-                shipToAddress: string, shipToCity: string, shipToState: string, units: number) {
+                shipToAddress: string, shipToCity: string, shipToState: string, units: number, sku: number) {
       this.poNumber = poNumber;
       this.shippingDate = shippingDate;
       this.shippingMethodCode = shippingMethodCode;
@@ -23,6 +24,7 @@ export class OrderModify {
       this.shipToCity = shipToCity;
       this.shipToState = shipToState;
       this.units = units;
+      this.sku = sku;
     }
 
     public createWithoutUnits(order: OrderModify) {
@@ -37,6 +39,7 @@ export class OrderModify {
         shipToAddress : order.shipToAddress,
         shipToCity : order.shipToCity,
         shipToState : order.shipToState,
+        sku : order.sku
       };
 
       return newWithoutUnits;

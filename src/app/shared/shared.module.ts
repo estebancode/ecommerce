@@ -32,6 +32,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgOnlyDigitMaskModule } from 'ng-only-digit-mask';
+import { MaxLengthPipe } from './pipe/max-length.pipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 
@@ -42,7 +46,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MensajeErrorCamposContenedorDirective,
     MensajeErrorCamposSubmitDirective,
     TrackByPipe,
-    NavComponent
+    NavComponent,
+    MaxLengthPipe
   ],
   imports: [
     ReactiveFormsModule,
@@ -60,7 +65,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     RouterModule,
-    LayoutModule],
+    LayoutModule,
+    NgOnlyDigitMaskModule,
+    MaterialFileInputModule
+  ],
   exports: [
     CommonModule,
     HttpClientModule,
@@ -91,7 +99,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     MatTabsModule,
     MatCheckboxModule,
-    NavComponent
+    NavComponent,
+    NgOnlyDigitMaskModule,
+    MaxLengthPipe,
+    MatTooltipModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

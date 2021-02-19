@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 
 const UNAUTHORIZED = 401;
+const UNAUTHORIZED_CORS = 0;
 const FORBIDDEN = 403;
 
 @Injectable()
@@ -19,10 +20,12 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError(error => {
         switch (error.status) {
           case UNAUTHORIZED:
-            this.router.navigate(['/login']);
+            this.router.navigate(['/authentication']);
             break;
           case FORBIDDEN:
             this.router.navigate(['/home']);
+          case UNAUTHORIZED_CORS:
+             this.router.navigate(['/authentication']);            
             break;
           default:
             return throwError(error);

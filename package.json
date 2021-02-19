@@ -26,8 +26,11 @@
     "animate.css": "^4.1.0",
     "bootstrap-4-grid": "^3.4.0",
     "lodash": "^4.17.20",
+    "mat-currency-format": "0.0.7",
     "moment": "^2.27.0",
+    "ng-only-digit-mask": "0.0.8",
     "ngx-cookie-service": "^2.2.0",
+    "ngx-material-file-input": "^2.1.1",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

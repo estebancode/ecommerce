@@ -11,10 +11,11 @@ import { HomeModule } from './feature/home/home.module';
 import { DashboardModule } from './feature/dashboard/dashboard.module';
 import { OrdersModule } from './feature/orders/orders.module';
 import { StockModule } from './feature/stock/stock.module';
+import { PaymentsModule } from './feature/payments/payments.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { StockModule } from './feature/stock/stock.module';
     BrowserAnimationsModule,
     DashboardModule,
     OrdersModule,
-    StockModule
+    StockModule,
+    PaymentsModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

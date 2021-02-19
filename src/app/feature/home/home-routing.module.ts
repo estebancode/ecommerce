@@ -23,6 +23,11 @@ const routes: Routes = [
         path: 'stock',
         loadChildren: '../stock/stock.module#StockModule',
         canActivate: [SecurityGuard]
+      },
+      {
+        path: 'payments',
+        loadChildren: '../payments/payments.module#PaymentsModule',
+        canActivate: [SecurityGuard]
       }
     ]
   },

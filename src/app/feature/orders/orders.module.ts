@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { ListComponent } from './components/list/list.component';
 import { SharedModule } from '@shared/shared.module';
+import { MatCurrencyFormatModule } from 'mat-currency-format';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SharedModule } from '@shared/shared.module';
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    SharedModule
+    SharedModule,
+    MatCurrencyFormatModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

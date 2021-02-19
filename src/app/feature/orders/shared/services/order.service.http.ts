@@ -28,6 +28,12 @@ export class OrderServiceHttp {
                 { headers: this.header });
   }
 
+  add(orders: Array<any>) {
+    return this.http.post(`${this.URL_ORDER}/CostcoCom/SaveCustomOrders`,
+    orders,
+                { headers: this.header });
+  }
+
   private buildURL(orderFiltered: FilterOrder): string {
     let urlFilter = `${this.URL_ORDER}/CostcoCom/GetOrders?dateFrom=${orderFiltered.dateFrom}&dateTo=${orderFiltered.dateTo}`;
 

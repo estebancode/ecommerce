@@ -7,9 +7,10 @@ import { FilterOrder } from '../../shared/models/filter.order';
 import * as moment from 'moment';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderModify } from '../../shared/models/modifyorder';
 import * as lodash from 'lodash';
+import { OrderSave } from '../../shared/models/addorder';
 
 @Component({
   selector: 'app-list',
@@ -32,6 +33,12 @@ export class ListComponent implements OnInit {
 
   findAudit: ProcessedOrder[] = new Array<ProcessedOrder>();
 
+  @ViewChild('manualOrders') manualOrders: TemplateRef<any>;
+  manualOrdersForm: FormGroup;
+
+  unitPrice: number;
+
+
   constructor(private service: OrderServiceHttp,
               public dialog: MatDialog,
               private formBuilder: FormBuilder) { }
@@ -50,6 +57,24 @@ export class ListComponent implements OnInit {
       shipToState: [''],
       units: ['']
     });
+
+    this.manualOrdersForm = this.formBuilder.group({
+      facilityCode: [null,Validators.required],
+      shipTo: [null,Validators.required],
+      shippingDate: [null,Validators.required],
+      shippingMethod: [null,Validators.required],
+      giftMessage: [null,Validators.required],
+      shipToAddress: [null,Validators.required],
+      shipToCity: [null,Validators.required],
+      shipToState: [null,Validators.required],
+      units: [null,Validators.required],
+      poNumber: [null,Validators.required],
+      productName: [null,Validators.required],
+      sku: [null,Validators.required],
+      item: [null,Validators.required],
+      unitPrice: [null,Validators.required]
+    });
+
   }
 
   isAllSelected() {
@@ -104,7 +129,7 @@ export class ListComponent implements OnInit {
       const order = new OrderModify(value.poNumber, this.formControls.shippingDate.value, this.formControls.shippingMethod.value,
         this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value,
         this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value,
-        this.formControls.units.value, value.sku);
+        Number(this.formControls.units.value), value.sku);
       const orderToModify = order.units > 0 ? order : order.createWithoutUnits(order);
       ordersToModify.push(orderToModify);
     }));
@@ -123,6 +148,50 @@ export class ListComponent implements OnInit {
     this.selection.clear();
   }
 
+  clearAddForm() {
+    this.manualOrdersForm.clearValidators();
+    this.manualOrdersForm.reset();
+  }
+
+  add() {
+    this.clearAddForm();
+    this.dialog.open(this.manualOrders, { 
+      width: '100%',
+      disableClose: true,
+      autoFocus: false,
+    }); 
+  }
+
+  saveOnSubmit() {
+    if (this.manualOrdersForm.valid) {
+      const ordersToSave = new Array<any>();
+  
+      const order = new OrderSave(this.formManualControls.poNumber.value,
+          this.formManualControls.shippingDate.value, this.formManualControls.shippingMethod.value,
+          this.formManualControls.shipTo.value, this.formManualControls.facilityCode.value,
+          this.formManualControls.giftMessage.value, this.formManualControls.shipToAddress.value,
+          this.formManualControls.shipToCity.value, this.formManualControls.shipToState.value,
+          Number(this.formManualControls.units.value), this.formManualControls.sku.value,
+          this.formManualControls.item.value, parseFloat(this.unitPrice.toString()),
+          this.formManualControls.productName.value);
+
+      ordersToSave.push(order);
+
+      this.service.add(ordersToSave).subscribe(() => {
+        this.clearAddForm();
+        this.dialog.closeAll();
+        alert('Successfully saved');
+      }, () => {
+        alert('An error has occurred');
+      });
+    }
+  }
+
+  updateTotal(event) {
+    this.unitPrice = event.target.value;
+  }
+
   get formControls() { return this.modifyOrdersForm.controls; }
+  get formManualControls() { return this.manualOrdersForm.controls; }
 
 }

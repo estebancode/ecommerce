@@ -7,4 +7,5 @@ export class FilterOrder {
     public ShippingMethod: string;
     public dateFrom: string;
     public dateTo: string;
+    public companyId: number;
 }

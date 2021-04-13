@@ -22,8 +22,8 @@ export class OrderServiceHttp {
     return this.http.get(URL, { headers: this.header });
   }
 
-  modify(orders: Array<any>) {
-    return this.http.put(`${this.URL_ORDER}/CostcoCom/UpdateOrders`,
+  modify(orders: Array<any>, companyId: number) {
+    return this.http.put(`${this.URL_ORDER}/Shared/UpdateOrders/${companyId}`,
     orders,
                 { headers: this.header });
   }
@@ -35,7 +35,7 @@ export class OrderServiceHttp {
   }
 
   private buildURL(orderFiltered: FilterOrder): string {
-    let urlFilter = `${this.URL_ORDER}/CostcoCom/GetOrders?dateFrom=${orderFiltered.dateFrom}&dateTo=${orderFiltered.dateTo}`;
+    let urlFilter = `${this.URL_ORDER}/Shared/GetOrders?customerType=${orderFiltered.companyId}&dateFrom=${orderFiltered.dateFrom}&dateTo=${orderFiltered.dateTo}`;
 
     if (orderFiltered.PoNumber) {
       urlFilter = `${urlFilter}&poNumber=${orderFiltered.PoNumber}`;

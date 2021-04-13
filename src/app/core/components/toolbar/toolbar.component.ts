@@ -45,6 +45,7 @@ export class ToolbarComponent {
   logOut() {
     localStorage.clear();
     this.cookieService.delete('token');
+    this.cookieService.delete('companyId');
     this.router.navigate(['/authentication']);
   }
 

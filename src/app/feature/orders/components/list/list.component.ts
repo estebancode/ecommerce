@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderModify } from '../../shared/models/modifyorder';
 import * as lodash from 'lodash';
 import { OrderSave } from '../../shared/models/addorder';
+import { constantsParameter } from '@shared/constants/globalVariables';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-list',
@@ -38,14 +40,18 @@ export class ListComponent implements OnInit {
 
   unitPrice: number;
 
+  companyId: number;
+
 
   constructor(private service: OrderServiceHttp,
               public dialog: MatDialog,
+              private cookieService: CookieService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.isSelection = true;
     this.totalUnits = 0;
+    this.companyId =  Number(this.cookieService.get('companyId'));
     this.modifyOrdersForm = this.formBuilder.group({
       facilityCode: [''],
       shipTo: [''],
@@ -108,6 +114,7 @@ export class ListComponent implements OnInit {
   searchOrders() {
     this.searchData.dateFrom = moment(this.searchData.StartDate).format('YYYY-MM-DD').toString();
     this.searchData.dateTo = moment(this.searchData.EndDate).format('YYYY-MM-DD').toString();
+    this.searchData.companyId = this.companyId;
     this.service.get(this.searchData).subscribe((response: Array<ProcessedOrder>) => {
       this.findAudit = response;
       this.dataSource = new MatTableDataSource<ProcessedOrder>(this.findAudit);
@@ -128,12 +135,12 @@ export class ListComponent implements OnInit {
 
       const order = new OrderModify(value.poNumber, this.formControls.shippingDate.value, this.formControls.shippingMethod.value,
         this.formControls.shipTo.value, this.formControls.facilityCode.value, this.formControls.giftMessage.value,
-        this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value,
-        Number(this.formControls.units.value), value.sku);
-      const orderToModify = order.units > 0 ? order : order.createWithoutUnits(order);
+        this.formControls.shipToAddress.value, this.formControls.shipToCity.value, this.formControls.shipToState.value, value.sku);
+        order.units = Number(this.formControls.units.value);
+        const orderToModify = this.formControls.units.value === ''  ? order.createWithoutUnits(order) : order;
       ordersToModify.push(orderToModify);
     }));
-    this.service.modify(ordersToModify).subscribe(() => {
+    this.service.modify(ordersToModify,this.companyId).subscribe(() => {
       this.searchOrders();
       this.clearModifyForm();
       this.dialog.closeAll();

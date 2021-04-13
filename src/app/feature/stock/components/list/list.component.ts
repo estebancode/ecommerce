@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import * as moment from 'moment';
 import * as lodash from 'lodash';
 import { StockModify } from '../../shared/models/modify.stock';
+import { CookieService } from 'ngx-cookie-service';
 
 export enum CustomerType {
   CostcoCom = 1001,
@@ -37,12 +38,16 @@ export class ListComponent implements OnInit {
 
   findAudit: StockRecord[] = new Array<StockRecord>();
 
+  companyId: number;
+
   constructor(private service: StockServiceHttp,
               public dialog: MatDialog,
+              private cookieService: CookieService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.isSelection = true;
+    this.companyId =  Number(this.cookieService.get('companyId'));    
     this.modifyStockForm = this.formBuilder.group({
       slot: [''],
       productName: [''],
@@ -82,6 +87,7 @@ export class ListComponent implements OnInit {
 
   searchStock() {
     this.searchData.dateFilter = moment(this.searchData.dueDate).format('YYYY-MM-DD').toString();
+    this.searchData.customerType = this.companyId;
     this.service.get(this.searchData).subscribe((response: Array<StockRecord>) => {
       this.findAudit = response;
       this.dataSource = new MatTableDataSource<StockRecord>(this.findAudit);
@@ -106,7 +112,7 @@ export class ListComponent implements OnInit {
 
       stockToModify.push(new StockModify(value.id, units, value.slot, value.facility, value.productName, value.duedate));
     }));
-
+    this.searchData.customerType = this.companyId;
     this.service.modify(stockToModify, this.searchData.customerType).subscribe(() => {
       this.searchStock();
       this.clearModifyForm();

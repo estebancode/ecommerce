@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { LoginServiceHttp } from '../../shared/services/login.service.http';
 import { Login } from '../../shared/models/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import jwt_decode from "jwt-decode";
+import { constantsParameter } from 'src/app/shared/constants/globalVariables';
 
 @Component({
   selector: 'app-signin',
@@ -54,7 +56,10 @@ export class SigninComponent implements OnInit {
       localStorage.setItem('user', user.username);
       const d: Date = new Date();
       d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
+      const decoded = jwt_decode(response.token);
+      constantsParameter.CURRENT_USER = decoded;
       document.cookie = `token=${response.token}; expires=${d.toUTCString()} path=${''}`;
+      document.cookie = `companyId=${constantsParameter.CURRENT_USER.CompanyId}; expires=${d.toUTCString()} path=${''}`;
       this.router.navigate(['/']);
     }, () => {
       this.clearLoginForm();

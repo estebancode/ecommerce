@@ -8,12 +8,12 @@ export class OrderModify {
     public shipToAddress: string;
     public shipToCity: string;
     public shipToState: string;
-    public units: number;
+    public units: number | null;
     public sku: number;
 
     constructor(poNumber: number, shippingDate: Date, shippingMethodCode: string,
                 shipTo: string, facilityCode: string, giftMessage: string,
-                shipToAddress: string, shipToCity: string, shipToState: string, units: number, sku: number) {
+                shipToAddress: string, shipToCity: string, shipToState: string, sku: number) {
       this.poNumber = poNumber;
       this.shippingDate = shippingDate;
       this.shippingMethodCode = shippingMethodCode;
@@ -23,7 +23,6 @@ export class OrderModify {
       this.shipToAddress = shipToAddress;
       this.shipToCity = shipToCity;
       this.shipToState = shipToState;
-      this.units = units;
       this.sku = sku;
     }
 
@@ -39,7 +38,8 @@ export class OrderModify {
         shipToAddress : order.shipToAddress,
         shipToCity : order.shipToCity,
         shipToState : order.shipToState,
-        sku : order.sku
+        sku : order.sku,
+        units : null,
       };
 
       return newWithoutUnits;

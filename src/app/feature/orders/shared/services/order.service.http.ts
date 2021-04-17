@@ -9,7 +9,8 @@ import { FilterOrder } from '../models/filter.order';
 export class OrderServiceHttp {
 
     private header = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Client-Cachable': 'not-Cachable',
     });
 
     public readonly URL_ORDER = `${environment.endpoint}`;

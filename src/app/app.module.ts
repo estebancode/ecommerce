@@ -12,6 +12,7 @@ import { DashboardModule } from './feature/dashboard/dashboard.module';
 import { OrdersModule } from './feature/orders/orders.module';
 import { StockModule } from './feature/stock/stock.module';
 import { PaymentsModule } from './feature/payments/payments.module';
+import { ReportsModule } from './feature/reports/reports.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PaymentsModule } from './feature/payments/payments.module';
     DashboardModule,
     OrdersModule,
     StockModule,
-    PaymentsModule
+    PaymentsModule,
+    ReportsModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

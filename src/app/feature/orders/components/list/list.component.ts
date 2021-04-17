@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderModify } from '../../shared/models/modifyorder';
 import * as lodash from 'lodash';
 import { OrderSave } from '../../shared/models/addorder';
-import { constantsParameter } from '@shared/constants/globalVariables';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
